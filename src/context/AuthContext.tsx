@@ -1,5 +1,5 @@
 'use client'
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react'
 import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import firebase_app from '@/firebase/config';
 
@@ -16,7 +16,7 @@ interface AuthContextProviderProps {
   children: ReactNode;
 }
 
-export function AuthContextProvider( { children }: AuthContextProviderProps ): JSX.Element {
+export function AuthContextProvider( { children }: AuthContextProviderProps ) {
   // Set up state to track the authenticated user and loading status
   const [ user, setUser ] = useState<User | null>( null );
   const [ loading, setLoading ] = useState( true );

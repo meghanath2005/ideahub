@@ -1,9 +1,9 @@
 'use client'
-import signUp from "@/firebase/auth/signup";
-import { useRouter } from 'next/navigation';
-import { useState } from "react";
+import React, { useState } from 'react'
+import signUp from '@/firebase/auth/signup'
+import { useRouter } from 'next/navigation'
 
-function Page(): JSX.Element {
+function Page() {
   const [ email, setEmail ] = useState( '' );
   const [ password, setPassword ] = useState( '' );
   const router = useRouter();
