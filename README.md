@@ -1,17 +1,15 @@
-# Next.js 13 Firebase Starter
+# IdeaHub
 
-This is a starter template for building Next.js 13 applications with Firebase. It provides a solid foundation for developing modern web applications with server-side rendering, authentication, and real-time data synchronization.
+IdeaHub is a full-stack template that extends the Next.js + Firebase starter with AI powered helpers for evaluating project ideas and planning hackathons.
 
 ## Features
 
 - Next.js 13: Build powerful and scalable server-side rendered React applications.
-- Firebase: Leverage the Firebase platform for authentication, real-time database, and cloud functions.
-- Tailwind CSS: Rapidly build custom user interfaces using the utility-first CSS framework.
-- Automatic Code Splitting: Optimize performance by splitting your JavaScript code into smaller, cacheable chunks.
-- Dynamic Routing: Create dynamic routes for handling different pages and content.
-- Hot Module Replacement: Enjoy a fast development experience with hot module replacement for instant code changes.
-- Environment Variables: Safely manage environment-specific configuration values using environment variables.
-- ESLint and Prettier: Maintain code quality and consistency with the help of ESLint and Prettier.
+- Firebase authentication and Firestore storage.
+- Idea evaluation API powered by OpenAI.
+- Import problems from Reddit via an n8n workflow.
+- Hackathon planning endpoint with optional **lock‑in mode** for fast MVPs.
+- Mind map visualiser using Mermaid with SVG export.
 
 ## Prerequisites
 
@@ -38,6 +36,20 @@ Before getting started, ensure you have the following prerequisites:
   npm run dev
   # or
   yarn dev
+```
+
+### Environment Variables
+
+Create a `.env.local` file based on the example below and supply your Firebase and OpenAI credentials:
+
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=your_key_here
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+OPENAI_API_KEY=sk-...
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -114,6 +126,12 @@ The folder structure of this project is organized as follows:
 - `firebase`: Houses the Firebase configuration and Firebase-related functions.
 
 Feel free to modify and expand the folder structure according to your project requirements.
+
+## API Endpoints
+
+- `POST /api/evaluateIdea` → returns an OpenAI generated evaluation and stores it under `ideas/` in Firestore.
+- `POST /api/redditProblems` → accepts a list of problem statements from n8n and stores them in `problems/`.
+- `POST /api/generatePlan` → generates a team plan for an idea. Set `lockIn` to `true` to optimise for hackathon speed.
 
 ## Deployment
 
