@@ -6,6 +6,7 @@ This is a starter template for building Next.js 13 applications with Firebase. I
 
 - Next.js 13: Build powerful and scalable server-side rendered React applications.
 - Firebase: Leverage the Firebase platform for authentication, real-time database, and cloud functions.
+- OpenAI-powered idea evaluation API via `/api/evaluateIdea`.
 - Tailwind CSS: Rapidly build custom user interfaces using the utility-first CSS framework.
 - Automatic Code Splitting: Optimize performance by splitting your JavaScript code into smaller, cacheable chunks.
 - Dynamic Routing: Create dynamic routes for handling different pages and content.
@@ -114,6 +115,10 @@ The folder structure of this project is organized as follows:
 - `firebase`: Houses the Firebase configuration and Firebase-related functions.
 
 Feel free to modify and expand the folder structure according to your project requirements.
+
+## Idea Evaluation API
+
+Send a POST request to `/api/evaluateIdea` with `{ idea, userId }` in the JSON body to receive an evaluation from OpenAI.
 
 ## Deployment
 
