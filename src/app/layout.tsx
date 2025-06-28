@@ -1,18 +1,19 @@
-import { AuthContextProvider } from '@/context/AuthContext';
-import { Inter } from 'next/font/google';
-import './globals.css';
+import React from 'react'
+import { AuthContextProvider } from '@/context/AuthContext'
+import { Inter } from 'next/font/google'
+import './globals.css'
 
 // Load the Inter font with 'latin' subset
 const inter = Inter( { subsets: [ 'latin' ] } );
 
 // Metadata for the application
 export const metadata = {
-  title: 'Next.js + Firebase Starter',
-  description: 'Template to use Next.js with Firebase',
+  title: 'IdeaHub',
+  description: 'AI powered idea evaluation and planning',
 };
 
 // Root layout component for the application
-export default function RootLayout( { children }: { children: React.ReactNode } ): JSX.Element {
+export default function RootLayout( { children }: { children: React.ReactNode } ) {
   return (
     <html lang="en">
       {/*
@@ -22,8 +23,11 @@ export default function RootLayout( { children }: { children: React.ReactNode } 
       */}
       <head />
       <body>
-        {/* Wrap the children with the AuthContextProvider to provide authentication context */}
         <AuthContextProvider>
+          <header className="flex items-center gap-2 p-4 border-b">
+            <img src="/logo.svg" alt="IdeaHub" className="h-8 w-auto" />
+            <h1 className="text-lg font-semibold">IdeaHub</h1>
+          </header>
           {children}
         </AuthContextProvider>
       </body>
